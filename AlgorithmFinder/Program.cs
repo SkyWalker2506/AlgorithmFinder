@@ -200,7 +200,6 @@ struct NumbersWithEarlierOperations
 {
     public float[] Numbers;
     public List<NumbersWithOperation> EarlierOperations;
-    
 }
 
 struct NumbersWithOperation
