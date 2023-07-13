@@ -1,25 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "/Users/musabkara/RiderProjects/AlgorithmFinder1/AlgorithmFinder/AlgorithmFinder.csproj": {}
+    "M:\\Unity\\Projects\\AlgorithmFinder\\AlgorithmFinder\\AlgorithmFinder.csproj": {}
   },
   "projects": {
-    "/Users/musabkara/RiderProjects/AlgorithmFinder1/AlgorithmFinder/AlgorithmFinder.csproj": {
+    "M:\\Unity\\Projects\\AlgorithmFinder\\AlgorithmFinder\\AlgorithmFinder.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/musabkara/RiderProjects/AlgorithmFinder1/AlgorithmFinder/AlgorithmFinder.csproj",
+        "projectUniqueName": "M:\\Unity\\Projects\\AlgorithmFinder\\AlgorithmFinder\\AlgorithmFinder.csproj",
         "projectName": "AlgorithmFinder",
-        "projectPath": "/Users/musabkara/RiderProjects/AlgorithmFinder1/AlgorithmFinder/AlgorithmFinder.csproj",
-        "packagesPath": "/Users/musabkara/.nuget/packages/",
-        "outputPath": "/Users/musabkara/RiderProjects/AlgorithmFinder1/AlgorithmFinder/obj/",
+        "projectPath": "M:\\Unity\\Projects\\AlgorithmFinder\\AlgorithmFinder\\AlgorithmFinder.csproj",
+        "packagesPath": "C:\\Users\\musab\\.nuget\\packages\\",
+        "outputPath": "M:\\Unity\\Projects\\AlgorithmFinder\\AlgorithmFinder\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/Users/musabkara/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\musab\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -53,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/Users/musabkara/.dotnet/sdk/7.0.101/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     }
