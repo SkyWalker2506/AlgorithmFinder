@@ -67,7 +67,7 @@ void FindAlgorithm()
 
     if (!isSolutionFound)
     {
-        Console.Write($"There is no solution to find {targetValue} with given numbers");
+        Console.Write($"There is no solution find for {targetValue} with given numbers");
     }  
     
 }
@@ -183,17 +183,12 @@ string GetCalculationString(float value1, float value2, Operation operation)
 
 
 
-void WriteOperations(List<NumbersWithOperation> earlierOperations)
+void WriteOperations(List<NumbersWithOperation> operations)
 {
-
-//    string result = GetCalculationStringNumbersWithOperation(earlierOperations[0]);
-
-    for (int i = 0; i < earlierOperations.Count; i++)
+    foreach (var operation in operations)
     {
-        Console.WriteLine(GetCalculationStringNumbersWithOperation(earlierOperations[i]));
+        Console.WriteLine(GetCalculationStringNumbersWithOperation(operation));
     }
-    
-  //  return result;
 }
 
 
