@@ -5,10 +5,10 @@ float[] numbers =
     1 , 7 , 17 , 24 , 41
 };
 
-float targetValue = 205;
+float targetValue = 209;
 
 //Since we use division and floats we need some error tolerance to get the result for some cases 
-const float targetTolerance = .25f;
+const float targetTolerance = .01f;
 
 bool findAllSolutions = true;
 
@@ -18,9 +18,6 @@ FindAlgorithm();
 
 void FindAlgorithm()
 {
-
-    string algorithm = "";
-
     NumbersWithEarlierOperations numbersWithEarlierOperations = new NumbersWithEarlierOperations
     {
         Numbers = numbers,
