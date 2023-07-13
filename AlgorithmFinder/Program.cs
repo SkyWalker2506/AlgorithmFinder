@@ -1,12 +1,13 @@
 ﻿
 
-float[] numbers = new float[]
+float[] numbers =
 {
-    1 , 7 , 17 , 24 , 41
+    1 , 2 , 3 , 4 
 };
 
-float result = 208;
+float targetValue = 10;
 
+const float targetTolerance = .2f;
 
 
 FindAlgorithm();
@@ -15,6 +16,7 @@ FindAlgorithm();
 
 void FindAlgorithm()
 {
+
     string algorithm = "";
 
     NumbersWithEarlierOperations numbersWithEarlierOperations = new NumbersWithEarlierOperations
@@ -25,10 +27,16 @@ void FindAlgorithm()
 
     List<NumbersWithEarlierOperations> numbersWithEarlierOperationsList =
         new List<NumbersWithEarlierOperations> { numbersWithEarlierOperations };
+
+    bool isSolutionFound = false;
     
     while (numbersWithEarlierOperationsList.Count > 0)
     {
-        List<NumbersWithEarlierOperations> newList = numbersWithEarlierOperationsList;
+        if (isSolutionFound)
+        {
+            break;
+        }
+        List<NumbersWithEarlierOperations> newList = new List<NumbersWithEarlierOperations>();
         foreach (NumbersWithEarlierOperations nweo in numbersWithEarlierOperationsList)
         {
             newList.AddRange(GetListNumbersWithEarlierOperation(nweo));   
@@ -39,14 +47,19 @@ void FindAlgorithm()
         {
             if (nweo.Numbers.Length == 1)
             {
-                
+                if (Math.Abs(nweo.Numbers[0] - targetValue) < targetTolerance)
+                {
+                    Console.WriteLine("Algorithm is found");
+                    Console.WriteLine(GetOperationsString(nweo.EarlierOperations));
+                    isSolutionFound = true;
+                }
             }
         }
-    }
+    } 
 
-    if (numbersWithEarlierOperationsList.Count == 0)
+    if (!isSolutionFound)
     {
-        Console.Write($"There is no solution fo find {result} with given numbers");
+        Console.Write($"There is no solution to find {targetValue} with given numbers");
     }  
     
 }
@@ -60,24 +73,77 @@ List<NumbersWithEarlierOperations> GetListNumbersWithEarlierOperation(NumbersWit
 
     foreach (float[] pair in pairs)
     {
-        
+        float[] restOfTheNumbers = new float[numbersWithEarlierOperation.Numbers.Length-2];
+        int index = 0;
+        foreach (float value in  numbersWithEarlierOperation.Numbers)
+        {
+            if (value != pair[0] && value != pair[1])
+            {
+                restOfTheNumbers[index] = value;
+                index++;
+            }
+        }
+        foreach (string operationString in Enum.GetNames(typeof(Operation)))
+        {
+            Operation operation = (Operation)Enum.Parse(typeof(Operation), operationString);
+            NumbersWithEarlierOperations newNumbersWithEarlierOperations = new NumbersWithEarlierOperations 
+            {
+                Numbers = new float[numbersWithEarlierOperation.Numbers.Length-1],
+                EarlierOperations = new List<NumbersWithOperation>()
+            };
+            newNumbersWithEarlierOperations.Numbers[0] = Calculate(pair[0], pair[1],operation);
+            for (int i = 0; i < restOfTheNumbers.Length; i++)
+            {
+                newNumbersWithEarlierOperations.Numbers[i + 1] = restOfTheNumbers[i];
+            }
+            newNumbersWithEarlierOperations.EarlierOperations.AddRange(numbersWithEarlierOperation.EarlierOperations);
+            newNumbersWithEarlierOperations.EarlierOperations.Add(new NumbersWithOperation
+            {
+                Number1 = pair[0], 
+                Number2 = pair[1],
+                Operation = operation
+            });
+            numbersWithEarlierOperations.Add(newNumbersWithEarlierOperations);
+        }
     }
     
     return numbersWithEarlierOperations;
 }
 
-float Calculate(NumbersWithOperation numbersWithOperation)
+
+
+List<float[]> GetPairs(float[] array)
 {
-    switch (numbersWithOperation.Operation)
+    List<float[]> pairs = new List<float[]>();
+    
+    for (int i = 0; i < array.Length; i++)
+    {
+        for (int j = i + 1; j < array.Length; j++)
+        {
+            if (array[i] != array[j])
+            {
+                pairs.Add(new[] { array[i], array[j] });
+               // pairs.Add(new[] { array[j], array[i] });
+            }
+        }
+    }
+
+    return pairs;
+}
+
+
+float Calculate(float number1, float number2, Operation operation)
+{
+    switch (operation)
     {
         case Operation.Sum:
-            return numbersWithOperation.Number1 + numbersWithOperation.Number1;
+            return number1 + number2;
         case Operation.Subtraction:
-            return numbersWithOperation.Number1 -numbersWithOperation.Number1 ;
+            return number1 - number2 ;
         case Operation.Multiplication:
-            return numbersWithOperation.Number1 * numbersWithOperation.Number1 ;
+            return number1 * number2 ;
         case Operation.Division:
-            return numbersWithOperation.Number1 == 0?float.MaxValue:numbersWithOperation.Number1 / numbersWithOperation.Number1 ;
+            return number2 == 0?float.MaxValue : number1 / number2;
     }
 
     return 0;
@@ -109,7 +175,7 @@ string GetCalculationString(string value1, string value2, Operation operation)
 
 
 
-string GetEarlierOperationsString(List<NumbersWithOperation> earlierOperations)
+string GetOperationsString(List<NumbersWithOperation> earlierOperations)
 {
 
     if (earlierOperations.Count == 0)
@@ -121,50 +187,11 @@ string GetEarlierOperationsString(List<NumbersWithOperation> earlierOperations)
 
     for (int i = 1; i < earlierOperations.Count; i++)
     {
-        result = GetCalculationString(result, GetCalculationStringNumbersWithOperation(earlierOperations[i]),
-            earlierOperations[i].Operation);
+        result += GetCalculationStringNumbersWithOperation(earlierOperations[i]);
     }
     
     return result;
 }
-
-
-string OperationToString(Operation operation)
-{
-    switch (operation)
-    {
-        case Operation.Sum:
-            return "+";
-        case Operation.Subtraction:
-            return "-";
-        case Operation.Multiplication:
-            return "*";
-        case Operation.Division:
-            return "/";
-    }
-
-    return "";
-}
-
-List<float[]> GetPairs(float[] array)
-{
-    List<float[]> pairs = new List<float[]>();
-    
-    for (int i = 0; i < array.Length; i++)
-    {
-        for (int j = i + 1; j < array.Length; j++)
-        {
-            if (array[i] != array[j])
-            {
-                pairs.Add(new[] { array[i], array[j] });
-                pairs.Add(new[] { array[j], array[i] });
-            }
-        }
-    }
-
-    return pairs;
-}
-
 
 
 enum Operation
@@ -174,7 +201,6 @@ enum Operation
     Multiplication,
     Division
 }
-
 
 struct NumbersWithEarlierOperations
 {
