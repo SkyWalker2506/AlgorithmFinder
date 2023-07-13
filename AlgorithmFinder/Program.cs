@@ -53,7 +53,6 @@ void FindAlgorithm()
                 {
                     Console.WriteLine($"\nAlgorithm {solutionIndex}");
                     WriteOperations(nweo.EarlierOperations);
-                    Console.WriteLine($"Result: {nweo.Numbers[0]}");
                     isSolutionFound = true;
                     solutionIndex++;
                     if (!findAllSolutions)
