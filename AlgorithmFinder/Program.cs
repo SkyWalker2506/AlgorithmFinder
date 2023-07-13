@@ -2,13 +2,14 @@
 
 float[] numbers =
 {
-    1 , 2 , 3 , 4 
+    1 , 7 , 17 , 24 , 41
 };
 
-float targetValue = 10;
+float targetValue = 205;
 
-const float targetTolerance = .2f;
+const float targetTolerance = .25f;
 
+bool findAllSolutions = true;
 
 FindAlgorithm();
 
@@ -29,7 +30,7 @@ void FindAlgorithm()
         new List<NumbersWithEarlierOperations> { numbersWithEarlierOperations };
 
     bool isSolutionFound = false;
-    
+    int solutionIndex = 1;
     while (numbersWithEarlierOperationsList.Count > 0)
     {
         if (isSolutionFound)
@@ -49,9 +50,15 @@ void FindAlgorithm()
             {
                 if (Math.Abs(nweo.Numbers[0] - targetValue) < targetTolerance)
                 {
-                    Console.WriteLine("Algorithm is found");
-                    Console.WriteLine(GetOperationsString(nweo.EarlierOperations));
+                    Console.WriteLine($"\nAlgorithm {solutionIndex}");
+                    WriteOperations(nweo.EarlierOperations);
+                    Console.WriteLine($"Result: {nweo.Numbers[0]}");
                     isSolutionFound = true;
+                    solutionIndex++;
+                    if (!findAllSolutions)
+                    {
+                        break;
+                    }
                 }
             }
         }
@@ -123,7 +130,7 @@ List<float[]> GetPairs(float[] array)
             if (array[i] != array[j])
             {
                 pairs.Add(new[] { array[i], array[j] });
-               // pairs.Add(new[] { array[j], array[i] });
+                pairs.Add(new[] { array[j], array[i] });
             }
         }
     }
@@ -151,22 +158,22 @@ float Calculate(float number1, float number2, Operation operation)
 
 string GetCalculationStringNumbersWithOperation(NumbersWithOperation numbersWithOperation)
 {
-    return GetCalculationString(numbersWithOperation.Number1.ToString(), numbersWithOperation.Number2.ToString(),
+    return GetCalculationString(numbersWithOperation.Number1, numbersWithOperation.Number2,
         numbersWithOperation.Operation);
 }
 
-string GetCalculationString(string value1, string value2, Operation operation)
+string GetCalculationString(float value1, float value2, Operation operation)
 {
     switch (operation)
     {
         case Operation.Sum:
-            return $"({value1} + {value2})";
+            return $"{value1} + {value2} = {value1 + value2}";
         case Operation.Subtraction:
-            return $"({value1} - {value2})";
+            return $"{value1} - {value2} = {value1 - value2}";
         case Operation.Multiplication:
-            return $"{value1} * {value2}";
+            return $"{value1} * {value2} = {value1 * value2}";
         case Operation.Division:
-            return $"{value1} / {value2}";
+            return $"{value1} / {value2} = {value1 / value2}";
     }
 
     return "";
@@ -175,22 +182,17 @@ string GetCalculationString(string value1, string value2, Operation operation)
 
 
 
-string GetOperationsString(List<NumbersWithOperation> earlierOperations)
+void WriteOperations(List<NumbersWithOperation> earlierOperations)
 {
 
-    if (earlierOperations.Count == 0)
-    {
-        return "";
-    }
+//    string result = GetCalculationStringNumbersWithOperation(earlierOperations[0]);
 
-    string result = GetCalculationStringNumbersWithOperation(earlierOperations[0]);
-
-    for (int i = 1; i < earlierOperations.Count; i++)
+    for (int i = 0; i < earlierOperations.Count; i++)
     {
-        result += GetCalculationStringNumbersWithOperation(earlierOperations[i]);
+        Console.WriteLine(GetCalculationStringNumbersWithOperation(earlierOperations[i]));
     }
     
-    return result;
+  //  return result;
 }
 
 
