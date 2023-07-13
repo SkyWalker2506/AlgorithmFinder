@@ -7,6 +7,7 @@ float[] numbers =
 
 float targetValue = 205;
 
+//Since we use division and floats we need some error tolerance to get the result for some cases 
 const float targetTolerance = .25f;
 
 bool findAllSolutions = true;
