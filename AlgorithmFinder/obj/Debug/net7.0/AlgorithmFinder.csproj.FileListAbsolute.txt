@@ -1,0 +1,15 @@
+/Users/musabkara/RiderProjects/AlgorithmFinder1/AlgorithmFinder/bin/Debug/net7.0/AlgorithmFinder
+/Users/musabkara/RiderProjects/AlgorithmFinder1/AlgorithmFinder/bin/Debug/net7.0/AlgorithmFinder.deps.json
+/Users/musabkara/RiderProjects/AlgorithmFinder1/AlgorithmFinder/bin/Debug/net7.0/AlgorithmFinder.runtimeconfig.json
+/Users/musabkara/RiderProjects/AlgorithmFinder1/AlgorithmFinder/bin/Debug/net7.0/AlgorithmFinder.dll
+/Users/musabkara/RiderProjects/AlgorithmFinder1/AlgorithmFinder/bin/Debug/net7.0/AlgorithmFinder.pdb
+/Users/musabkara/RiderProjects/AlgorithmFinder1/AlgorithmFinder/obj/Debug/net7.0/AlgorithmFinder.csproj.AssemblyReference.cache
+/Users/musabkara/RiderProjects/AlgorithmFinder1/AlgorithmFinder/obj/Debug/net7.0/AlgorithmFinder.GeneratedMSBuildEditorConfig.editorconfig
+/Users/musabkara/RiderProjects/AlgorithmFinder1/AlgorithmFinder/obj/Debug/net7.0/AlgorithmFinder.AssemblyInfoInputs.cache
+/Users/musabkara/RiderProjects/AlgorithmFinder1/AlgorithmFinder/obj/Debug/net7.0/AlgorithmFinder.AssemblyInfo.cs
+/Users/musabkara/RiderProjects/AlgorithmFinder1/AlgorithmFinder/obj/Debug/net7.0/AlgorithmFinder.csproj.CoreCompileInputs.cache
+/Users/musabkara/RiderProjects/AlgorithmFinder1/AlgorithmFinder/obj/Debug/net7.0/AlgorithmFinder.dll
+/Users/musabkara/RiderProjects/AlgorithmFinder1/AlgorithmFinder/obj/Debug/net7.0/refint/AlgorithmFinder.dll
+/Users/musabkara/RiderProjects/AlgorithmFinder1/AlgorithmFinder/obj/Debug/net7.0/AlgorithmFinder.pdb
+/Users/musabkara/RiderProjects/AlgorithmFinder1/AlgorithmFinder/obj/Debug/net7.0/AlgorithmFinder.genruntimeconfig.cache
+/Users/musabkara/RiderProjects/AlgorithmFinder1/AlgorithmFinder/obj/Debug/net7.0/ref/AlgorithmFinder.dll
